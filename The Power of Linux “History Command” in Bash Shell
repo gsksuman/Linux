@@ -1,0 +1,141 @@
+We use history command frequently in our daily routine jobs to check history of command or to get info about command executed by user. In this post, we will see how we can use history command effectively to extract the command which was executed by users in Bash shell. This may be useful for audit purpose or to find out what command is executed at what date and time.
+
+By default date and timestamp won’t be seen while executing history command. However, bash shell provides CLI tools for editing user’s command history. Let’s see some handy tips and tricks and power of history command.
+
+1. List Last/All Executed Commands in Linux
+Executing simple history command from terminal will show you a complete list of last executed commands with line numbers.
+
+[narad@tecmint ~]$ history
+1  PS1='\e[1;35m[\u@\h \w]\$ \e[m '
+2  PS1="\e[0;32m[\u@\h \W]\$ \e[m "
+3  PS1="\u@\h:\w [\j]\$ "
+4  ping google.com
+5  echo $PS1
+6   tail -f /var/log/messages
+7  tail -f /var/log/messages
+8  exit
+9  clear
+10  history
+11  clear
+12  history
+2. List All Commands with Date and Timestamp
+How to find date and timestamp against command? With ‘export’ command with variable will display history command with corresponding timestamp when the command was executed.
+
+[narad@tecmint ~]$ export HISTTIMEFORMAT='%F %T  '
+1  2013-06-09 10:40:12   cat /etc/issue
+2  2013-06-09 10:40:12   clear
+3  2013-06-09 10:40:12   find /etc -name *.conf
+4  2013-06-09 10:40:12   clear
+5  2013-06-09 10:40:12   history
+6  2013-06-09 10:40:12   PS1='\e[1;35m[\u@\h \w]\$ \e[m '
+7  2013-06-09 10:40:12   PS1="\e[0;32m[\u@\h \W]\$ \e[m "
+8  2013-06-09 10:40:12   PS1="\u@\h:\w [\j]\$ "
+9  2013-06-09 10:40:12   ping google.com
+10  2013-06-09 10:40:12   echo $PS1
+Meaning of HISTTIMEFORMAT variables
+
+%F Equivalent to %Y - %m - %d
+%T Replaced by the time ( %H : %M : %S )
+3. Filter Commands in History
+
+ 
+As we can see same command is being repeated number of times in above output. How to filter simple or non destructive commands in history?. Use the following ‘export‘ command by specifying command in HISTIGNORE=’ls -l:pwd:date:’ will not saved by system and not be shown in history command.
+
+[narad@tecmint ~]$ export HISTIGNORE='ls -l:pwd:date:'
+4. Ignore Duplicate Commands in History
+With the below command will help us to ignore duplicate commands entry made by user. Only single entry will be shown in history, if a user execute a same command multiple times in a Bash Prompt.
+
+[narad@tecmint ~]$ export HISTCONTROL=ignoredups
+5. Unset export Command
+Unset export command on the fly. Execute unset export command with variable one by one whatever commands have been exported by export command.
+
+[narad@tecmint ~]$ unset export HISTCONTROL
+6. Save export Command Permanently
+Make an entry as follows in .bash_profile to save export command permanently.
+
+[narad@tecmint ~]$ vi .bash_profile
+# .bash_profile
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+. ~/.bashrc
+fi
+# User specific environment and startup programs
+export HISTCONTROL=ignoredups
+PATH=$PATH:$HOME/bin
+export PATH
+7. List Specific User’s Executed Commands
+How to see command history executed by a specific user. Bash keeps records of history in a ‘~/.bash_history’ file. We can view or open file to see the command history.
+
+[narad@tecmint ~]$ vi .bash_history
+cd /tmp/
+cd logstalgia-1.0.3/
+./configure
+sudo passwd root
+apt-get install libsdl1.2-dev libsdl-image1.2-dev libpcre3-dev libftgl-dev libpng12-dev libjpeg62-dev make gcc
+./configure
+make
+apt-get install libsdl1.2-dev libsdl-image1.2-dev libpcre3-dev libftgl-dev libpng12-dev libjpeg62-dev make gcc++
+apt-get install libsdl1.2-dev libsdl-image1.2-dev libpcre3-dev libftgl-dev libpng12-dev libjpeg62-dev make gcc
+apt-get install make
+mysql -u root -p
+apt-get install grsync
+apt-get install unison
+unison
+8. Disable Storing History of Commands
+Some organization do not keep history of commands because of security policy of the organization. In this case, we can edit .bash_profile file (It’s hidden file) of user’s and make an entry as below.
+
+[narad@tecmint ~]$ vi .bash_profile
+# .bash_profile
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+. ~/.bashrc
+fi
+# User specific environment and startup programs
+PATH=$PATH:$HOME/bin
+HISTSIZE=0
+export PATH
+.bash_profile (END)
+Save file and load changes with below command.
+
+[narad@tecmint ~]$ source .bash_profile
+Note: If you don’t want system to remember the commands that you have typed, simply execute below command which will disable or stop recording history on the fly.
+
+[narad@tecmint ~]$ export HISTSIZE=0
+Tips: Search ‘HISTSIZE‘ and edit in ‘/etc/profile’ file with superuser. The change in file will effect globally.
+
+9. Delete or Clear History of Commands
+With up and down arrow, we can see previously used command which may be helpful or may irate you. Deleting or clearing all the entries from bash history list with ‘-c‘ options.
+
+[narad@tecmint ~]$ history -c
+10. Search Commands in History Using Grep Command
+Search command through ‘.bash_history‘ by piping your history file into ‘grep‘ as below. For example, the below command will search and find ‘pwd‘ command from the history list.
+
+[narad@tecmint ~]$ history | grep pwd
+113  2013-06-09 10:40:12     pwd
+141  2013-06-09 10:40:12     pwd
+198  2013-06-09 15:46:23     history | grep pwd
+202  2013-06-09 15:47:39     history | grep pwd
+11. Search Lastly Executed Command
+Search previously executed command with ‘Ctrl+r’ command. Once you’ve found the command you’re looking for, press ‘Enter‘ to execute the same else press ‘esc‘ to cancel it.
+
+(reverse-i-search)`source ': source .bash_profile
+12. Recall Last Executed Command
+Recall a previously used specific command. Combination of Bang and 8 (!8) command will recall number 8 command which you have executed.
+
+[narad@tecmint ~]$ !8
+13. Recall Lastly Executed Specific Command
+Recall previously used command (netstat -np | grep 22) with ‘!‘ and followed by some letters of that particular command.
+
+[narad@tecmint ~]$ !net
+netstat -np | grep 22
+(No info could be read for "-p": geteuid()=501 but you should be root.)
+tcp        0     68 192.168.50.2:22             192.168.50.1:1857           ESTABLISHED -
+tcp        0      0 192.168.50.2:22             192.168.50.1:2516           ESTABLISHED -
+unix  2      [ ]         DGRAM                    12284  -                   @/org/freedesktop/hal/udev_event
+unix  3      [ ]         STREAM     CONNECTED     14522  -
+unix  2      [ ]         DGRAM                    13622  -
+unix  3      [ ]         STREAM     CONNECTED     12250  -                   @/var/run/hald/dbus-ujAjOMNa0g
+unix  3      [ ]         STREAM     CONNECTED     12249  -
+unix  3      [ ]         STREAM     CONNECTED     12228  -                   /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     12227  -
+We have tried to highlight power of history command. However, this is not end of it. Please share your experience of history command with us through our comment box below.

@@ -8,3 +8,6 @@ ip-2   : IP of the server/system for which you want port forwardig
 port-2   : port of the server/system for which you want port forwardig
 
 After entering command, prompt ask for IP-1 password. 
+
+Putting SSH in the background -------------------------------
+ssh -L 10.64.216.92:26:10.137.2.24:25 root@10.64.216.92 -fN

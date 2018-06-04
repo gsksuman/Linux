@@ -1,0 +1,8 @@
+mysql is probably the most widely used open source database on Linux. Even if you don’t run a mysql database on your server, you might end-up using the mysql command ( client ) to connect to a mysql database running on the remote server.
+
+To connect to a remote mysql database. This will prompt for a password.
+$ mysql -u root -p -h 192.168.1.2
+
+To connect to a local mysql database.
+$ mysql -u root -p
+If you want to specify the mysql root password in the command line itself, enter it immediately after -p (without any space).

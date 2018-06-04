@@ -1,0 +1,13 @@
+Login to remote host
+$ ssh [userName]@[ip/hostName] 
+This command will ask for password
+
+Login to remote host
+$ ssh -l jsmith remotehost.example.com
+
+Debug ssh client
+$ ssh -v -l jsmith remotehost.example.com
+
+Display ssh client version
+$ ssh -V
+OpenSSH_3.9p1, OpenSSL 0.9.7a Feb 19 2003

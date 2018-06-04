@@ -1,0 +1,12 @@
+This command is used to display the free, used, swap memory available in the system.
+
+Typical free command output. The output is displayed in bytes.
+
+$ free
+
+If you want to quickly check how many GB of RAM your system has use the -g option. -b option displays in bytes, -k in kilo bytes, -m in mega bytes.
+$ free -g
+
+If you want to see a total memory ( including the swap), use the -t switch, which will display a total line as shown below.
+
+$ free -t

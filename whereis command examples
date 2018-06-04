@@ -1,0 +1,8 @@
+When you want to find out where a specific Unix command exists (for example, where does ls command exists?), you can execute the following command.
+
+$ whereis ls
+ls: /bin/ls /usr/share/man/man1/ls.1.gz /usr/share/man/man1p/ls.1p.gz
+When you want to search an executable from a path other than the whereis default path, you can use -B option and give path as argument to it. This searches for the executable lsmk in the /tmp directory, and displays it, if it is available.
+
+$ whereis -u -B /tmp -f lsmk
+lsmk: /tmp/lsmk

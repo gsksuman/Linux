@@ -1,0 +1,8 @@
+Displays the file system disk space usage. By default df -k displays output in bytes.
+$ df -k
+
+df -h displays output in human readable form. i.e size will be displayed in GB’s.
+$ df -h
+
+Use -T option to display what type of file system.
+$ df -T

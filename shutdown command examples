@@ -1,0 +1,11 @@
+Shutdown the system and turn the power off immediately.
+# shutdown -h now
+
+Shutdown the system after 10 minutes.
+# shutdown -h +10
+
+Reboot the system using shutdown command.
+# shutdown -r now
+
+Force the filesystem check during reboot.
+# shutdown -Fr now

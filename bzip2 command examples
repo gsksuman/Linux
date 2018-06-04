@@ -1,0 +1,5 @@
+To create a *.bz2 compressed file:
+$ bzip2 test.txt
+
+To uncompress a *.bz2 file:
+bzip2 -d test.txt.bz2

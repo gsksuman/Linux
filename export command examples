@@ -1,0 +1,8 @@
+To view oracle related environment variables.
+
+$ export | grep ORACLE
+declare -x ORACLE_BASE="/u01/app/oracle"
+declare -x ORACLE_HOME="/u01/app/oracle/product/10.2.0"
+
+To export an environment variable:
+$ export ORACLE_HOME=/u01/app/oracle/product/10.2.0

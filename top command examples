@@ -1,0 +1,5 @@
+top command displays the top processes in the system ( by default sorted by cpu usage ). To sort top output by any column, Press O (upper-case O) , which will display all the possible columns that you can sort by as shown below.
+
+To displays only the processes that belong to a particular user use -u option. The following will show only the top processes that belongs to oracle user.
+
+$ top -u oracle

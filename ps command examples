@@ -1,0 +1,9 @@
+ps command is used to display information about the processes that are running in the system.
+
+While there are lot of arguments that could be passed to a ps command, following are some of the common ones.
+
+To view current running processes.
+$ ps -ef | more
+
+To view current running processes in a tree structure. H option stands for process hierarchy.
+$ ps -efH | more

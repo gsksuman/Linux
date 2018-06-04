@@ -1,0 +1,9 @@
+Use ifconfig command to view or configure a network interface on the Linux system.
+
+View all the interfaces along with status.
+$ ifconfig -a
+
+Start or stop a specific interface using up and down command as shown below.
+$ ifconfig eth0 up
+
+$ ifconfig eth0 down

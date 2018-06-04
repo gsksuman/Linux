@@ -1,0 +1,8 @@
+To install apache using rpm.
+# rpm -ivh httpd-2.2.3-22.0.1.el5.i386.rpm
+
+To upgrade apache using rpm.
+# rpm -uvh httpd-2.2.3-22.0.1.el5.i386.rpm
+
+To uninstall/remove apache using rpm.
+# rpm -ev httpd

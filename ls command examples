@@ -1,0 +1,9 @@
+Display filesize in human readable format (e.g. KB, MB etc.,)
+$ ls -lh
+-rw-r----- 1 ramesh team-dev 8.9M Jun 12 15:27 arch-linux.txt.gz
+
+Order Files Based on Last Modified Time (In Reverse Order) Using ls -ltr
+$ ls -ltr
+
+Visual Classification of Files With Special Characters Using ls -F
+$ ls -F

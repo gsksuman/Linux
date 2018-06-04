@@ -1,0 +1,8 @@
+Change your password from command line using passwd. This will prompt for the old password followed by the new password.
+$ passwd
+
+Super user can use passwd command to reset others password. This will not prompt for current password of the user.
+# passwd USERNAME
+
+Remove password for a specific user. Root user can disable password for a specific user. Once the password is disabled, the user can login without entering the password.
+# passwd -d USERNAME

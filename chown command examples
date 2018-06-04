@@ -1,0 +1,7 @@
+chown command is used to change the owner and group of a file. \
+
+To change owner to oracle and group to db on a file. i.e Change both owner and group at the same time.
+$ chown oracle:dba dbora.sh
+
+Use -R to change the ownership recursively.
+$ chown -R oracle:dba /home/oracle

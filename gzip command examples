@@ -1,0 +1,11 @@
+To create a *.gz compressed file:
+$ gzip test.txt
+
+To uncompress a *.gz file:
+$ gzip -d test.txt.gz
+
+Display compression ratio of the compressed file using gzip -l
+
+$ gzip -l *.gz
+         compressed        uncompressed  ratio uncompressed_name
+              23709               97975  75.8% asp-patch-rpms.txt

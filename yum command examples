@@ -1,0 +1,8 @@
+To install apache using yum.
+$ yum install httpd
+
+To upgrade apache using yum.
+$ yum update httpd
+
+To uninstall/remove apache using yum.
+$ yum remove httpd

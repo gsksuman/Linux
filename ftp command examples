@@ -1,0 +1,8 @@
+Both ftp and secure ftp (sftp) has similar commands. To connect to a remote server and download multiple files, do the following.
+$ ftp IP/hostname
+ftp> mget *.html
+To view the file names located on the remote server before downloading, mls ftp command as shown below.
+
+ftp> mls *.html -
+/ftptest/features.html
+/ftptest/index.html

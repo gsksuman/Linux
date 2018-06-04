@@ -1,0 +1,10 @@
+Service command is used to run the system V init scripts. i.e Instead of calling the scripts located in the /etc/init.d/ directory with their full path, you can use the service command.
+
+Check the status of a service:
+# service ssh status
+
+Check the status of all the services.
+# service --status-all
+
+Restart a service.
+# service ssh restart

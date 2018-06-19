@@ -6,3 +6,6 @@ $ sed -n '1!G;h;$p' thegeekstuff.txt
 
 Add line number for all non-empty-lines in a file
 $ sed '/./=' thegeekstuff.txt | sed 'N; s/\n/ /'
+
+sed -i 's/foo/bar/g' *
+Occurrences of "foo" will be replaced with "bar".

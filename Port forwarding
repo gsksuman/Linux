@@ -11,6 +11,8 @@ After entering command, prompt ask for IP-1 password.
 
 Putting SSH in the background -------------------------------
 ssh -L 10.64.***.**:26:10.137.2.**:25 root@10.64.***.** -fN
+or
+use option "-nNfL"
 
 To remove port forwarding:
 1) Fine process using command

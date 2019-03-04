@@ -1,0 +1,23 @@
+
+command && echo "OK" || echo "NOK"
+
+if command succeeds, then echo "OK" is executed, and since it's successful, execution stops there. Otherwise, 
+&& is skipped, and echo "NOK" is executed.
+
+&& is a logical operator. ; is simple sequencing.
+
+In cmd1 && cmd2, cmd2 will only be run if cmd1 exits with a successful return code.
+
+Whereas in cmd1; cmd2, cmd2 will run regardless of the exit status of cmd1 (assuming you haven't set your shell to exit on all failure in your script or something).
+
+On a related note, with cmd1 || cmd2, using the || 'OR' logical operator, cmd2 will only be run if cmd1 fails (returns a non-zero exit code).
+
+These logical operators are sometimes used in scripts in place of a basic if statement. For example,
+
+if [[ -f "$foo" ]]; then mv "$foo" "${foo%.txt}.mkd"; fi
+...can be more concisely achieved with:
+
+[[ -f "$foo" ]] && mv "$foo" "${foo%.txt}.mkd"
+
+
+

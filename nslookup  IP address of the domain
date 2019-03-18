@@ -1,0 +1,9 @@
+
+C:\Users>nslookup www.google.com
+Server:  SNDCD001.in.ril.com
+Address:  10.128.16.138
+
+Non-authoritative answer:
+Name:    www.google.com
+Addresses:  2404:6800:4009:803::2004
+          216.58.203.164

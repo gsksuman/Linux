@@ -1,0 +1,3 @@
+zip -r filename.zip folder
+zip -r filename.zip folder1 folder2
+zip -r filename.zip /path/to/folder1 /path/to/file2

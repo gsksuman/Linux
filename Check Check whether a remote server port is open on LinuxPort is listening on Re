@@ -1,0 +1,10 @@
+1) echo > /dev/tcp/
+  echo > /dev/tcp/10.32.136.208/7092 && echo "Port is open"
+  Output:
+  If port is open 
+    Port is open
+  else  
+    -bash: connect: Connection refused
+    -bash: /dev/tcp/10.32.136.208/7092: Connection refused
+    
+ 2) 

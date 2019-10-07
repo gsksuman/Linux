@@ -7,4 +7,17 @@
     -bash: connect: Connection refused
     -bash: /dev/tcp/10.32.136.208/7092: Connection refused
     
- 2) 
+ 2) nc
+  nc or netcat is an utility which can do lots of TCP and UDP related stuff including packet transimission, port scanning etc. 
+  To check whether a port is open, the syntax is:
+      nc -v [host] [port]
+
+  The -v is to print the output in verbose mode and -z is for scanning the listening service at the specified port.
+
+When the port is open, the output looks like
+
+Connection to 192.168.56.160 22 port [tcp/ssh] succeeded
+
+When the port is not open, the output looks like
+
+nc: connect to 192.168.56.160 port 443 (tcp) failed: Connection refused

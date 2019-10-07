@@ -7,6 +7,13 @@
     -bash: connect: Connection refused
     -bash: /dev/tcp/10.32.136.208/7092: Connection refused
     
+    * /dev/tcp/host/port
+    If host is a valid hostname or Internet address, and port is an integer port number
+    or service name, bash attempts to open a TCP connection to the corresponding socket.
+    * /dev/udp/host/port
+    If host is a valid hostname or Internet address, and port is an integer port number
+    or service name, bash attempts to open a UDP connection to the corresponding socket.
+    
  2) nc
   nc or netcat is an utility which can do lots of TCP and UDP related stuff including packet transimission, port scanning etc. 
   To check whether a port is open, the syntax is:

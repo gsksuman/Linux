@@ -1,6 +1,9 @@
 Steps:
 1) jps - to find java process id
-2) jstack [process id] > thread.txt - to take thread dump and redirect command output in a text file.
+- Using jstack
+ jstack [process id] > thread.txt - to take thread dump and redirect command output in a text file.
+-Using jcmd
+ jcmd [process id] Thread.print > threadDump.txt
 
 To understand thread dump read following link:
 https://dzone.com/articles/how-analyze-java-thread-dumps

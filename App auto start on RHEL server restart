@@ -1,0 +1,46 @@
+Auto-Start Tomcat on Server Reboot
+To ensure Tomcat starts automatically when your server restarts, you need to register it as a system service. The exact steps depend on your OS. Here's how to do it for the most common setups.
+
+🐧 Linux (systemd — RHEL, CentOS, Ubuntu, Debian)
+This is the modern, recommended approach.
+
+Step 1: Create a systemd service file
+
+sudo vi /etc/systemd/system/tomcat.service
+Paste the following (adjust JAVA_HOME, CATALINA_HOME, and User to match your environment):
+
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+
+[Service]
+Type=forking
+
+Environment=JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
+Environment=CATALINA_HOME=/opt/tomcat
+Environment=CATALINA_BASE=/opt/tomcat
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+User=tomcat
+Group=tomcat
+UMask=0007
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+Step 2: Reload systemd, enable & start
+sudo systemctl daemon-reload
+sudo systemctl enable tomcat      # ← enables auto-start on boot
+sudo systemctl start tomcat
+sudo systemctl status tomcat      # verify it's running
+Step 3: Test it
+sudo reboot
+# After server comes back:
+sudo systemctl status tomcat
+✅ Key flag: Restart=always also relaunches Tomcat if it crashes, not just on reboot.
